@@ -1,12 +1,15 @@
 import { Link, useLocation } from "wouter";
-import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Search, ShoppingBag, User, Menu, X, BookOpen, BadgeCheck, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useCatalog } from "@/components/CatalogModal";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { openCatalog } = useCatalog();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -18,82 +21,177 @@ export default function Header() {
     setMobileMenuOpen(false);
   }, [location]);
 
+  const navItems = [
+    { label: "Steering Systems", href: "/shop" },
+    { label: "About OBM", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-300 border-b",
-          scrolled || mobileMenuOpen
-            ? "border-white/10 bg-[#071A2D]/80 backdrop-blur-md py-4 shadow-lg"
-            : "border-transparent bg-transparent py-5 lg:py-6"
-        )}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-4 lg:gap-6">
-            <button 
-              className="lg:hidden text-white hover:text-[#2FA8A0] transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        {/* Authorized Vendor Banner */}
+        <AnimatePresence initial={false}>
+          {!scrolled && !mobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-[#2FA8A0] text-white overflow-hidden"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-            <Link href="/" className="text-white font-display text-xl lg:text-2xl font-bold tracking-tighter uppercase flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#2FA8A0] flex items-center justify-center rounded-sm">
-                <div className="w-4 h-4 border-2 border-white rotate-45"></div>
+              <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-center sm:justify-between gap-4 text-[10px] font-bold tracking-[0.2em] uppercase">
+                <div className="flex items-center gap-2">
+                  <BadgeCheck className="w-3.5 h-3.5" />
+                  <span>Authorized Mavi Mare Vendor</span>
+                </div>
+                <a href="tel:+18636949099" className="hidden sm:flex items-center gap-2 hover:text-[#071A2D] transition-colors">
+                  <Phone className="w-3.5 h-3.5" /> (863) 694-9099
+                </a>
               </div>
-              <span>AQUAVANCE</span>
-            </Link>
-          </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-          <nav className="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-widest uppercase opacity-70">
-            <Link href="/shop" className="text-white hover:text-[#2FA8A0] transition-colors">Shop Parts</Link>
-            <Link href="/shop" className="text-white hover:text-[#2FA8A0] transition-colors">Categories</Link>
-            <Link href="/about" className="text-white hover:text-[#2FA8A0] transition-colors">Our Story</Link>
-            <Link href="/about" className="text-white hover:text-[#2FA8A0] transition-colors">Support</Link>
-          </nav>
-
-          <div className="flex items-center gap-4 lg:gap-6 text-white">
-            <div className="hidden sm:flex relative items-center border border-white/20 px-3 py-1.5 rounded-full cursor-pointer hover:border-white/40 transition-colors">
-              <span className="text-[10px] opacity-50 uppercase mr-10">Search Parts...</span>
-              <div className="w-3 h-3 border-2 border-white/40 rounded-full"></div>
+        <motion.header
+          initial={false}
+          animate={{
+            paddingTop: scrolled || mobileMenuOpen ? 12 : 18,
+            paddingBottom: scrolled || mobileMenuOpen ? 12 : 18,
+          }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className={cn(
+            "w-full border-b transition-colors duration-300",
+            scrolled || mobileMenuOpen
+              ? "border-white/10 bg-[#071A2D]/90 backdrop-blur-md shadow-lg"
+              : "border-transparent bg-[#071A2D]/30 backdrop-blur-sm"
+          )}
+        >
+          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4 lg:gap-6">
+              <button
+                className="lg:hidden text-white hover:text-[#2FA8A0] transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+              <Link href="/" className="text-white font-display flex items-center gap-3 group">
+                <motion.img
+                  src="/logo.png"
+                  alt="OceanBay Marketing"
+                  className="w-10 h-10 lg:w-11 lg:h-11 object-contain drop-shadow-[0_2px_8px_rgba(47,168,160,0.3)]"
+                  whileHover={{ rotate: -6, scale: 1.08 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <div className="hidden sm:flex flex-col leading-none">
+                  <span className="text-base lg:text-lg font-bold tracking-tight">OceanBay</span>
+                  <span className="text-[9px] lg:text-[10px] font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-0.5">Marketing</span>
+                </div>
+              </Link>
             </div>
-            <button className="hover:text-[#2FA8A0] transition-colors lg:hidden">
-              <Search className="w-5 h-5" />
-            </button>
-            <button className="hover:text-[#2FA8A0] transition-colors hidden lg:block">
-              <User className="w-5 h-5" />
-            </button>
-            <Link href="/cart" className="hover:text-[#2FA8A0] transition-colors relative">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-1.5 -right-1.5 bg-white text-[#071A2D] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                2
-              </span>
-            </Link>
+
+            <nav className="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-widest uppercase">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={cn(
+                    "relative transition-colors group",
+                    location === item.href ? "text-white" : "text-white/70 hover:text-white"
+                  )}
+                >
+                  <span>{item.label}</span>
+                  <span
+                    className={cn(
+                      "absolute -bottom-2 left-0 right-0 h-px bg-[#2FA8A0] transition-transform duration-300 origin-left",
+                      location === item.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    )}
+                  />
+                </Link>
+              ))}
+              <button
+                type="button"
+                onClick={openCatalog}
+                className="relative text-white/70 hover:text-white transition-colors group cursor-pointer"
+              >
+                <span>Catalog</span>
+                <span className="absolute -bottom-2 left-0 right-0 h-px bg-[#2FA8A0] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              </button>
+            </nav>
+
+            <div className="flex items-center gap-4 lg:gap-6 text-white">
+              <div className="hidden md:flex relative items-center border border-white/20 px-3 py-1.5 rounded-full cursor-pointer hover:border-white/40 transition-colors">
+                <span className="text-[10px] opacity-50 uppercase mr-10">Search models...</span>
+                <div className="w-3 h-3 border-2 border-white/40 rounded-full"></div>
+              </div>
+              <button className="hover:text-[#2FA8A0] transition-colors md:hidden">
+                <Search className="w-5 h-5" />
+              </button>
+              <button className="hover:text-[#2FA8A0] transition-colors hidden lg:block">
+                <User className="w-5 h-5" />
+              </button>
+              <Link href="/cart" className="hover:text-[#2FA8A0] transition-colors relative">
+                <ShoppingBag className="w-5 h-5" />
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.4, type: "spring", stiffness: 500, damping: 25 }}
+                  className="absolute -top-1.5 -right-1.5 bg-[#2FA8A0] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                >
+                  2
+                </motion.span>
+              </Link>
+            </div>
           </div>
-        </div>
-      </header>
+        </motion.header>
+      </div>
 
       {/* Mobile Menu */}
-      <div 
-        className={cn(
-          "fixed inset-0 z-40 bg-[#071A2D] pt-24 px-6 flex flex-col transition-transform duration-300 lg:hidden",
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-40 bg-[#071A2D] pt-28 px-6 flex flex-col lg:hidden"
+          >
+            <nav className="flex flex-col gap-6 items-start text-white flex-1">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
+                >
+                  <Link href={item.href} className="text-lg font-bold tracking-widest uppercase hover:text-[#2FA8A0] transition-colors">
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.button
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.28 }}
+                type="button"
+                onClick={() => { setMobileMenuOpen(false); openCatalog(); }}
+                className="text-lg font-bold tracking-widest uppercase hover:text-[#2FA8A0] transition-colors flex items-center gap-2"
+              >
+                <BookOpen className="w-5 h-5" /> Catalog
+              </motion.button>
+            </nav>
+            <div className="border-t border-white/10 py-6 flex items-center gap-6 text-white justify-center">
+              <button className="flex items-center gap-2 hover:text-[#2FA8A0] uppercase tracking-widest text-xs font-bold transition-colors">
+                <Search className="w-5 h-5" /> Search
+              </button>
+              <button className="flex items-center gap-2 hover:text-[#2FA8A0] uppercase tracking-widest text-xs font-bold transition-colors">
+                <User className="w-5 h-5" /> Account
+              </button>
+            </div>
+          </motion.div>
         )}
-      >
-        <nav className="flex flex-col gap-6 items-start text-white flex-1">
-          <Link href="/shop" className="text-lg font-bold tracking-widest uppercase hover:text-[#2FA8A0] transition-colors">Shop Parts</Link>
-          <Link href="/shop" className="text-lg font-bold tracking-widest uppercase hover:text-[#2FA8A0] transition-colors">Categories</Link>
-          <Link href="/about" className="text-lg font-bold tracking-widest uppercase hover:text-[#2FA8A0] transition-colors">Our Story</Link>
-          <Link href="/about" className="text-lg font-bold tracking-widest uppercase hover:text-[#2FA8A0] transition-colors">Support</Link>
-        </nav>
-        <div className="border-t border-white/10 py-6 flex items-center gap-6 text-white justify-center">
-          <button className="flex items-center gap-2 hover:text-[#2FA8A0] uppercase tracking-widest text-xs font-bold transition-colors">
-            <Search className="w-5 h-5" /> Search
-          </button>
-          <button className="flex items-center gap-2 hover:text-[#2FA8A0] uppercase tracking-widest text-xs font-bold transition-colors">
-            <User className="w-5 h-5" /> Account
-          </button>
-        </div>
-      </div>
+      </AnimatePresence>
     </>
   );
 }
