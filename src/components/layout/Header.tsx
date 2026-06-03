@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Search, ShoppingBag, User, Menu, X, BookOpen, BadgeCheck, Phone } from "lucide-react";
+import { Menu, X, BookOpen, BadgeCheck, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50">
-        {/* Authorized Vendor Banner */}
+        {/* Authorized Distributor Banner */}
         <AnimatePresence initial={false}>
           {!scrolled && !mobileMenuOpen && (
             <motion.div
@@ -43,7 +43,7 @@ export default function Header() {
               <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-center sm:justify-between gap-4 text-[10px] font-bold tracking-[0.2em] uppercase">
                 <div className="flex items-center gap-2">
                   <BadgeCheck className="w-3.5 h-3.5" />
-                  <span>Authorized Mavi Mare Vendor</span>
+                  <span>Authorized Mavi Mare Distributor</span>
                 </div>
                 <a href="tel:+18636949099" className="hidden sm:flex items-center gap-2 hover:text-[#071A2D] transition-colors">
                   <Phone className="w-3.5 h-3.5" /> (863) 694-9099
@@ -120,29 +120,6 @@ export default function Header() {
               </button>
             </nav>
 
-            <div className="flex items-center gap-4 lg:gap-6 text-white">
-              <div className="hidden md:flex relative items-center border border-white/20 px-3 py-1.5 rounded-full cursor-pointer hover:border-white/40 transition-colors">
-                <span className="text-[10px] opacity-50 uppercase mr-10">Search models...</span>
-                <div className="w-3 h-3 border-2 border-white/40 rounded-full"></div>
-              </div>
-              <button className="hover:text-[#2FA8A0] transition-colors md:hidden">
-                <Search className="w-5 h-5" />
-              </button>
-              <button className="hover:text-[#2FA8A0] transition-colors hidden lg:block">
-                <User className="w-5 h-5" />
-              </button>
-              <Link href="/cart" className="hover:text-[#2FA8A0] transition-colors relative">
-                <ShoppingBag className="w-5 h-5" />
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.4, type: "spring", stiffness: 500, damping: 25 }}
-                  className="absolute -top-1.5 -right-1.5 bg-[#2FA8A0] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
-                >
-                  2
-                </motion.span>
-              </Link>
-            </div>
           </div>
         </motion.header>
       </div>
@@ -181,14 +158,6 @@ export default function Header() {
                 <BookOpen className="w-5 h-5" /> Catalog
               </motion.button>
             </nav>
-            <div className="border-t border-white/10 py-6 flex items-center gap-6 text-white justify-center">
-              <button className="flex items-center gap-2 hover:text-[#2FA8A0] uppercase tracking-widest text-xs font-bold transition-colors">
-                <Search className="w-5 h-5" /> Search
-              </button>
-              <button className="flex items-center gap-2 hover:text-[#2FA8A0] uppercase tracking-widest text-xs font-bold transition-colors">
-                <User className="w-5 h-5" /> Account
-              </button>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,6 +1,6 @@
 import { useParams, Link } from "wouter";
 import { products } from "@/data/products";
-import { Star, Truck, ShieldCheck, ArrowLeft, Plus, Minus, Share2, Heart, Phone, Check, ExternalLink, BookOpen } from "lucide-react";
+import { Star, Truck, ShieldCheck, ArrowLeft, Plus, Minus, Phone, Check, ExternalLink, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { motion } from "motion/react";
 import { useCatalog } from "@/components/CatalogModal";
@@ -135,10 +135,6 @@ export default function ProductDetail() {
                 <span className="text-[10px] text-[#2FA8A0] uppercase tracking-[0.2em] font-black">
                   Model {product.model} · SKU {product.sku}
                 </span>
-                <div className="flex items-center gap-3 text-white/40">
-                   <motion.button whileHover={{ scale: 1.15, rotate: -8 }} className="hover:text-[#2FA8A0] transition-colors"><Share2 className="w-5 h-5"/></motion.button>
-                   <motion.button whileHover={{ scale: 1.15 }} className="hover:text-red-500 transition-colors"><Heart className="w-5 h-5"/></motion.button>
-                </div>
               </motion.div>
 
               <motion.h1
@@ -157,7 +153,7 @@ export default function ProductDetail() {
                     <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-[#2FA8A0]' : 'opacity-30'}`} />
                   ))}
                 </div>
-                <span className="text-[11px] font-semibold tracking-wider text-white/60 underline decoration-white/20 underline-offset-4 cursor-pointer hover:decoration-white transition-colors">
+                <span className="text-[11px] font-semibold tracking-wider text-white/60">
                   {product.reviews} Reviews
                 </span>
               </motion.div>

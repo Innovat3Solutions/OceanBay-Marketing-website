@@ -40,7 +40,6 @@ export const products: Product[] = [
     rating: 4.8,
     reviews: 64,
     sku: 'OBM-GF90BT',
-    isBestseller: true,
     description:
       'Complete Mavi Mare hydraulic steering system, packaged in a box, for outboard engines up to 80 hp. Ships ready to install. The dependable choice for small center consoles, skiffs, and bay boats.',
     includes: [
@@ -111,6 +110,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 41,
     sku: 'OBM-GF300HD',
+    isBestseller: true,
     description:
       'Heavy-duty reinforced Mavi Mare steering system built for outboards up to 300 hp, or twin 300 hp counter-rotating setups (600 hp combined). The HD cylinder and 5/16″ hoses handle the loads of high-horsepower installs.',
     includes: [
@@ -136,6 +136,42 @@ export const products: Product[] = [
       'Hoses available fully fitted on both ends on request'
     ],
     manufacturerUrl: 'https://www.mavimare.com/en/product/art-gf300hd/'
+  },
+  {
+    id: 'gf300bhd',
+    name: 'GF300BHD Evolution Hydraulic Steering, up to 300 hp',
+    model: 'GF300BHD',
+    category: 'Hydraulic Steering Kits',
+    image: '/products/gf300hd.jpg',
+    rating: 5.0,
+    reviews: 12,
+    sku: 'OBM-GF300BHD',
+    isNew: true,
+    description:
+      'Reinforced Mavi Mare "Evolution" steering system with the patented fixed-hose cylinder, built for outboards up to 300 hp or twin 300 hp counter-rotating setups (600 hp combined). Performance steering with simplified installation thanks to the integrated fixed hoses on the balanced bullhorn cylinder.',
+    includes: [
+      'GM2-MRA01 helm pump with standard square bezel kit',
+      'MC300BHD heavy-duty cylinder (frontal mounting, balanced bullhorn, fixed hoses)',
+      'Chrome-plated brass fittings (2 kits included)',
+      'Fast-connection filler tube kit',
+      '2 liters Mavi Mare H-AP51 hydraulic oil',
+      'Two 7.5 m hoses, SAE 100 R7 5/16″, fittings pressed on one end'
+    ],
+    specs: [
+      { label: 'Max Engine Power', value: 'Up to 300 hp (single) or 2 × 300 hp counter-rotating' },
+      { label: 'Turns (lock-to-lock)', value: '5' },
+      { label: 'Helm Pump', value: 'GM2-MRA01 (with square bezel kit)' },
+      { label: 'Cylinder', value: 'MC300BHD (heavy duty, balanced bullhorn, patented fixed-hose Evolution)' },
+      { label: 'Hoses', value: '2 × 7.5 m, SAE 100 R7 5/16″' },
+      { label: 'Hydraulic Oil', value: '2 liters (Art. H-AP51)' },
+      { label: 'Manufacturer', value: 'MaviMare & Mancini SRL, Italy' }
+    ],
+    compatibility: [
+      'Optional frontal hose connection kit (X.344) for limited-clearance installations',
+      'Use kit X.393 for Suzuki 150A / 175A / 200A engines',
+      'Not intended for racing boats'
+    ],
+    manufacturerUrl: 'https://www.mavimare.com/en/product/art-gf300bhd-evolution-up-to-300-hp/'
   },
   {
     id: 'gf350hd',

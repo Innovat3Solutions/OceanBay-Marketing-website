@@ -1,16 +1,18 @@
 import { products, categories } from "@/data/products";
 import { Link, useRoute } from "wouter";
-import { Star, Filter, ChevronDown, BookOpen } from "lucide-react";
+import { Star, Filter, ChevronDown, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useCatalog } from "@/components/CatalogModal";
 import { Reveal } from "@/components/Reveal";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const PRODUCTS_PER_PAGE = 6;
 
 export default function Shop() {
   const [match, params] = useRoute<{ id: string }>("/category/:id");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const { openCatalog } = useCatalog();
 
   useEffect(() => {
@@ -22,9 +24,23 @@ export default function Shop() {
     }
   }, [match, params?.id]);
 
-  const displayedProducts = activeCategory
+  // Reset to the first page whenever the active category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
+
+  const filteredProducts = activeCategory
     ? products.filter(p => p.category === activeCategory)
     : products;
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE));
+  const pageStart = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const displayedProducts = filteredProducts.slice(pageStart, pageStart + PRODUCTS_PER_PAGE);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="pt-28 min-h-screen">
@@ -111,7 +127,11 @@ export default function Shop() {
           <div className="flex-1">
             <div className="flex justify-between items-center mb-8 pb-4 border-b border-white/10">
               <div className="text-[11px] font-semibold tracking-wider uppercase text-white/50">
-                Showing <motion.span key={displayedProducts.length} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-white">{displayedProducts.length}</motion.span> results
+                Showing{" "}
+                <motion.span key={displayedProducts.length} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-white">
+                  {filteredProducts.length === 0 ? 0 : pageStart + 1}–{pageStart + displayedProducts.length}
+                </motion.span>{" "}
+                of <span className="text-white">{filteredProducts.length}</span> results
               </div>
               <button className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-white hover:text-[#2FA8A0] transition-colors">
                 Sort By <ChevronDown className="w-4 h-4" />
@@ -193,6 +213,43 @@ export default function Shop() {
               >
                 No products found matching the criteria.
               </motion.div>
+            )}
+
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-16 pt-8 border-t border-white/10">
+                <button
+                  type="button"
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="flex items-center gap-1 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-[#2FA8A0] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronLeft className="w-4 h-4" /> Prev
+                </button>
+
+                {Array.from({ length: totalPages }, (_, idx) => idx + 1).map(page => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => goToPage(page)}
+                    className={`w-9 h-9 text-[11px] font-black tracking-widest transition-colors ${
+                      page === currentPage
+                        ? "bg-[#2FA8A0] text-white"
+                        : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="flex items-center gap-1 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-[#2FA8A0] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  Next <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             )}
           </div>
         </div>

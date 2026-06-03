@@ -20,7 +20,7 @@ export default function Home() {
           className="absolute inset-0 bg-[#071A2D]"
         >
           <img
-            src="/Hero%20Static%20Fallback.png"
+            src="/Hero%20Image%202.png"
             alt="Ocean Bay Marketing marine hydraulic steering"
             className="absolute inset-0 w-full h-full object-cover opacity-60 scale-105"
           />
@@ -47,7 +47,7 @@ export default function Home() {
               className="mb-6 flex items-center gap-3"
             >
               <span className="inline-block w-10 h-px bg-[#2FA8A0]" />
-              <span className="text-[#2FA8A0] text-xs font-bold tracking-[0.3em] uppercase">Authorized Mavi Mare Vendor</span>
+              <span className="text-[#2FA8A0] text-xs font-bold tracking-[0.3em] uppercase">Authorized Mavi Mare Distributor</span>
             </motion.div>
 
             <motion.h1
@@ -68,7 +68,7 @@ export default function Home() {
               }}
               className="text-lg opacity-70 text-[#F4F1EC] max-w-md mb-8 leading-relaxed font-sans"
             >
-              Premium Mavi Mare hydraulic steering kits, helm pumps, and steering wheels for outboards from 80 to 350 hp. Quality meets affordability.
+              Premium hydraulic steering kits, helm pumps, and steering wheels for outboards from 80 to 350 hp. Quality meets affordability.
             </motion.p>
 
             <motion.div
@@ -276,12 +276,12 @@ export default function Home() {
             />
           </Reveal>
           <Reveal x={40} y={0} delay={0.1} className="p-12 md:p-24 flex flex-col justify-center bg-white/5">
-            <h4 className="text-[#2FA8A0] text-[10px] font-bold uppercase tracking-[0.3em] mb-4">About OBM</h4>
+            <h4 className="text-[#2FA8A0] text-[10px] font-bold uppercase tracking-[0.3em] mb-4">About <span className="text-sm">OBM</span></h4>
             <h2 className="text-5xl font-display leading-[0.95] mb-6 tracking-tight">
               Quality Meets <br />Affordability.
             </h2>
             <p className="text-white/60 mb-6 text-sm leading-relaxed max-w-md">
-              Ocean Bay Marketing is committed to delivering exceptional value and service. We specialize in Mavi Mare hydraulic steering systems for outboard engines, with kits engineered for everything from light bay boats to offshore center consoles.
+              Ocean Bay Marketing is committed to delivering exceptional value and service. We specialize in Mavi Mare hydraulic steering systems for outboard and inboard engines, with kits engineered for recreational and commercial use.
             </p>
             <p className="text-white/60 mb-12 text-sm leading-relaxed max-w-md">
               Every system we carry is matched to your engine's horsepower so the helm responds the way the captain expects. No guesswork, just reliable steering, backed by responsive support.

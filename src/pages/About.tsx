@@ -44,7 +44,7 @@ export default function About() {
             }}
             className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto font-sans"
           >
-            Marine hydraulic steering, sourced and supported by people who care that it lands right.
+            Marine hydraulic steering, sourced and supported by people who care.
           </motion.p>
         </motion.div>
       </section>
@@ -102,9 +102,8 @@ export default function About() {
               <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2FA8A0] mb-4">What We Carry</h3>
               <h2 className="text-4xl font-display text-[#F4F1EC] mb-6">Steering Built for the Job</h2>
               <p className="font-sans leading-relaxed text-white/60">
-                Complete hydraulic kits for outboards from 80 hp (GF90BT) through 350 hp (GF350HD), tilt-adjustable
-                helm pumps with built-in lock valves, and carbon-fiber steering wheels with anodized aluminum spokes.
-                Every part of the Mavi Mare lineup we stock is selected because it earns its place at the helm.
+                Complete hydraulic kits for outboards from 80 hp (GF90BT) through 350 hp (GF350HD).
+                Multi outboard hydraulic kits and inboard hydraulic kits available.
               </p>
             </Reveal>
           </div>
@@ -115,7 +114,7 @@ export default function About() {
       <section className="bg-white/5 border-y border-white/10 text-white py-24 text-center px-6">
         <Reveal>
           <h2 className="text-4xl md:text-6xl font-display mb-8 max-w-3xl mx-auto text-[#F4F1EC]">
-            Need help spec'ing a steering system?
+            Need help finding the right steering system?
           </h2>
           <p className="text-white/60 max-w-xl mx-auto mb-8 font-sans">
             Call us at <a href="tel:+18636949099" className="text-[#2FA8A0] hover:text-white transition-colors">(863) 694-9099</a> or browse the catalog and request a quote.

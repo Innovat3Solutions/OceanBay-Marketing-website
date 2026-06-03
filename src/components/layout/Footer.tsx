@@ -21,7 +21,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              Authorized Mavi Mare vendor. Premium marine hydraulic steering systems for outboard engines, where quality meets affordability.
+              Authorized Mavi Mare distributor. Premium marine hydraulic steering systems for outboard engines, where quality meets affordability.
             </p>
           </div>
 
