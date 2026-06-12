@@ -78,7 +78,7 @@ export default function Header() {
               </button>
               <Link href="/" className="text-white font-display flex items-center gap-3 group">
                 <motion.img
-                  src="/logo.png"
+                  src="/OBM%20logo.png"
                   alt="OceanBay Marketing"
                   className="w-14 h-14 lg:w-16 lg:h-16 object-contain drop-shadow-[0_2px_8px_rgba(47,168,160,0.3)]"
                   whileHover={{ rotate: -6, scale: 1.08 }}

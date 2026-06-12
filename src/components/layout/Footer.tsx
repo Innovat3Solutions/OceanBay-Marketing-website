@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="text-white font-display flex items-center gap-3 group w-max">
               <img
-                src="/logo.png"
+                src="/OBM%20logo.png"
                 alt="OceanBay Marketing"
                 className="w-16 h-16 object-contain drop-shadow-[0_2px_10px_rgba(47,168,160,0.35)] transition-transform duration-300 group-hover:scale-105"
               />
