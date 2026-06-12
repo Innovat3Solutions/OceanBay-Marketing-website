@@ -22,11 +22,7 @@ export const CATALOG_URL = 'https://online.fliphtml5.com/dwiaq/Catalogo_2026/';
 
 export const categories = [
   { id: 'hydraulic-kits', name: 'Hydraulic Steering Kits', image: '/products/gf150brt.jpg' },
-  { id: 'helm-pumps', name: 'Helm Pumps', image: '/products/gm2-mra01-t.jpg' },
   { id: 'steering-wheels', name: 'Steering Wheels', image: '/products/vcr35.jpg' },
-  { id: 'cylinders', name: 'Cylinders', image: '/products/gf300hd.jpg' },
-  { id: 'hoses-fittings', name: 'Hoses & Fittings', image: '/products/gf90bt.jpg' },
-  { id: 'accessories', name: 'Accessories', image: '/products/gf350hd.jpg' },
 ];
 
 export const products: Product[] = [
@@ -208,40 +204,41 @@ export const products: Product[] = [
     manufacturerUrl: 'https://www.mavimare.com/en/product/art-gf350hd-reinforced-steering-up-to-350-hp/'
   },
   {
-    id: 'gm2-mra01-t',
-    name: 'GM2-MRA01-T Tilt Steering Helm Pump',
-    model: 'GM2-MRA01-T',
-    category: 'Helm Pumps',
-    image: '/products/gm2-mra01-t.jpg',
-    rating: 4.9,
-    reviews: 36,
-    sku: 'OBM-GM2-MRA01-T',
+    id: 'gf300hd2',
+    name: 'GF300HD2 Double-Cylinder Steering Kit, Triple Application',
+    model: 'GF300HD2',
+    category: 'Hydraulic Steering Kits',
+    image: '/products/gf300hd.jpg',
+    rating: 5.0,
+    reviews: 9,
+    sku: 'OBM-GF300HD2',
     isNew: true,
     description:
-      'Compact tilt-adjustable helm pump with built-in lock valve and over-pressure valve. Stainless steel AISI 316 shaft and cast iron rotor for long service life. Five locking positions across a 50° tilt range deliver an ergonomic helm setup for long days underway.',
+      'Reinforced Mavi Mare hydraulic steering system engineered for triple outboard setups up to 300 hp each. The dual-cylinder design links a primary and secondary cylinder for synchronized steering across three engines, delivering performance steering with straightforward installation.',
     includes: [
-      'GM2-MRA01-T helm pump body',
-      'Built-in lock valve',
-      'Built-in over-pressure valve',
-      'Stainless steel AISI 316 shaft',
-      'Cast iron rotor'
+      'GM2-MRA03 helm pump with standard square bezel kit (Art. X.343)',
+      'MC300HD cylinder (frontal mounting, balanced bullhorn type)',
+      'MC300HD2 second cylinder',
+      'Chrome-plated brass fittings (1× GTN7X10916ORB kit + 1× AC38/T916 kit)',
+      '2 liters Mavi Mare H-AP51 hydraulic oil',
+      'Two 7.5 m hoses, SAE 100 R7 5/16″, fittings pressed on one end'
     ],
     specs: [
-      { label: 'Displacement', value: '27 cm³' },
-      { label: 'Pistons', value: '7' },
-      { label: 'Max Pressure', value: '70 bar' },
-      { label: 'Max Wheel Diameter', value: '406 mm (16″)' },
-      { label: 'Tilt Range', value: '50° with 5 locking positions' },
-      { label: 'Weight', value: '5.5 kg' },
-      { label: 'Shaft', value: 'Stainless steel AISI 316' },
-      { label: 'Rotor', value: 'Cast iron' },
+      { label: 'Max Engine Power', value: 'Triple outboards, up to 300 hp each' },
+      { label: 'Turns (lock-to-lock)', value: '8' },
+      { label: 'Helm Pump', value: 'GM2-MRA03 (with X.343 bezel)' },
+      { label: 'Cylinders', value: 'MC300HD + MC300HD2 (frontal mounting, balanced bullhorn)' },
+      { label: 'Hoses', value: '2 × 7.5 m, SAE 100 R7 5/16″' },
+      { label: 'Hydraulic Oil', value: '2 liters (Art. H-AP51)' },
       { label: 'Manufacturer', value: 'MaviMare & Mancini SRL, Italy' }
     ],
     compatibility: [
-      'Available in four displacements: 27, 32, 39, 43 cm³ (MRA01 / MRA03 / MRA04 / MRA05)',
-      'Pairs with Mavi Mare MC-series cylinders'
+      'Use kit X.393 for Suzuki 150A / 175A / 200A engines',
+      'Optional tie bars 358.09 / 358.09R available',
+      'Additional hose & fitting kits X.351 / X.352 available separately',
+      'Not intended for racing boats'
     ],
-    manufacturerUrl: 'https://www.mavimare.com/en/product/art-gm2-mra01-t-tilt-steering-helm-pump/'
+    manufacturerUrl: 'https://www.mavimare.com/en/product/art-gf300hd2-double-cylinder-kit-triple-application/'
   },
   {
     id: 'vcr35',

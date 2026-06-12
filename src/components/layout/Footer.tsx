@@ -29,9 +29,7 @@ export default function Footer() {
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2FA8A0] mb-6">Catalog</h4>
             <ul className="space-y-4">
               <li><Link href="/category/hydraulic-kits" className="text-white/50 hover:text-white text-[11px] font-semibold tracking-wider uppercase transition-colors">Hydraulic Steering Kits</Link></li>
-              <li><Link href="/category/helm-pumps" className="text-white/50 hover:text-white text-[11px] font-semibold tracking-wider uppercase transition-colors">Helm Pumps</Link></li>
               <li><Link href="/category/steering-wheels" className="text-white/50 hover:text-white text-[11px] font-semibold tracking-wider uppercase transition-colors">Steering Wheels</Link></li>
-              <li><Link href="/category/accessories" className="text-white/50 hover:text-white text-[11px] font-semibold tracking-wider uppercase transition-colors">Accessories</Link></li>
             </ul>
           </div>
 
