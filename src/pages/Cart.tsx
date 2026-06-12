@@ -1,8 +1,10 @@
 import { Link } from "wouter";
-import { ArrowRight, Trash2, Minus, Plus, Phone, Mail } from "lucide-react";
+import { ArrowRight, Trash2, Minus, Plus, Phone, Mail, CheckCircle2, Loader2 } from "lucide-react";
 import { motion } from "motion/react";
+import { useState, type FormEvent } from "react";
 import { products } from "@/data/products";
 import { Reveal } from "@/components/Reveal";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -14,18 +16,46 @@ export default function Cart() {
 
   const totalUnits = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-  const quoteSubject = encodeURIComponent("Quote request from Ocean Bay Marketing site");
-  const quoteBody = encodeURIComponent(
-    [
-      "Hello Ocean Bay Marketing,",
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [feedback, setFeedback] = useState("");
+
+  async function handleQuoteSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    if (fd.get("botcheck")) return;
+
+    const itemsList = cartItems
+      .map(i => `- ${i.product.model} (${i.product.name}) — Qty ${i.quantity}, SKU ${i.product.sku}`)
+      .join("\n");
+
+    const message = [
+      "Quote request submitted from the Ocean Bay Marketing website.",
       "",
-      "I'd like a quote on the following items:",
+      "Items:",
+      itemsList,
       "",
-      ...cartItems.map(i => `- ${i.product.model} (${i.product.name}), Qty ${i.quantity}, SKU ${i.product.sku}`),
-      "",
-      "Thanks."
-    ].join("\n")
-  );
+      `Additional notes: ${String(fd.get("notes") || "—")}`,
+    ].join("\n");
+
+    setStatus("submitting");
+    const result = await submitToWeb3Forms({
+      subject: "New quote request — Ocean Bay Marketing",
+      from_name: "Ocean Bay Marketing Website",
+      name: String(fd.get("name") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      message,
+    });
+
+    if (result.success) {
+      setStatus("success");
+      form.reset();
+    } else {
+      setStatus("error");
+      setFeedback(result.message);
+    }
+  }
 
   return (
     <div className="pt-36 pb-24 min-h-screen">
@@ -127,24 +157,80 @@ export default function Cart() {
                 </div>
               </div>
 
-              <div className="border-t border-white/20 pt-6 mb-8">
+              <div className="border-t border-white/20 pt-6 mb-6">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2FA8A0] mb-3">How it works</p>
                 <p className="text-xs text-white/60 leading-relaxed font-sans">
                   Submit your quote request and our team will reply with pricing, availability, and shipping options for your selected Mavi Mare models.
                 </p>
               </div>
 
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href={`mailto:OceanBayMarketing@outlook.com?subject=${quoteSubject}&body=${quoteBody}`}
-                className="group relative overflow-hidden w-full bg-[#F4F1EC] text-[#071A2D] py-4 text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 mb-4"
-              >
-                <span className="relative z-10 group-hover:text-white transition-colors flex items-center gap-2">
-                  Submit Quote Request <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-                <span className="absolute inset-0 bg-[#2FA8A0] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-              </motion.a>
+              {status === "success" ? (
+                <div className="flex flex-col items-center text-center gap-3 py-6 mb-4">
+                  <CheckCircle2 className="w-12 h-12 text-[#2FA8A0]" />
+                  <h4 className="text-lg font-display text-white">Quote request sent!</h4>
+                  <p className="text-white/60 text-xs font-sans">
+                    Thanks — we'll reply with pricing and availability within one business day.
+                  </p>
+                </div>
+              ) : (
+                <form className="space-y-3 mb-4" onSubmit={handleQuoteSubmit}>
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Your name"
+                    className="w-full bg-white/5 border border-white/20 py-3 px-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#2FA8A0] transition-colors"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="Your email"
+                    className="w-full bg-white/5 border border-white/20 py-3 px-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#2FA8A0] transition-colors"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone (optional)"
+                    className="w-full bg-white/5 border border-white/20 py-3 px-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#2FA8A0] transition-colors"
+                  />
+                  <textarea
+                    name="notes"
+                    rows={3}
+                    placeholder="Engine make / model / hp, or any notes (optional)"
+                    className="w-full bg-white/5 border border-white/20 py-3 px-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#2FA8A0] transition-colors resize-none"
+                  />
+
+                  {status === "error" && (
+                    <p className="text-xs text-red-400 font-sans">{feedback}</p>
+                  )}
+
+                  <motion.button
+                    whileHover={{ scale: status === "submitting" ? 1 : 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="group relative overflow-hidden w-full bg-[#F4F1EC] text-[#071A2D] py-4 text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    <span className="relative z-10 group-hover:text-white transition-colors flex items-center gap-2">
+                      {status === "submitting" ? (
+                        <>Sending <Loader2 className="w-4 h-4 animate-spin" /></>
+                      ) : (
+                        <>Submit Quote Request <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" /></>
+                      )}
+                    </span>
+                    <span className="absolute inset-0 bg-[#2FA8A0] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+                  </motion.button>
+                </form>
+              )}
 
               <div className="space-y-2 mt-6 pt-6 border-t border-white/10">
                 <a href="tel:+18636949099" className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors">
