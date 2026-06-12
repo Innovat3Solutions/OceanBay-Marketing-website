@@ -208,7 +208,7 @@ export const products: Product[] = [
     name: 'GF300HD2 Double-Cylinder Steering Kit, Triple Application',
     model: 'GF300HD2',
     category: 'Hydraulic Steering Kits',
-    image: '/products/gf300hd.jpg',
+    image: '/products/gf300hd2.jpg',
     rating: 5.0,
     reviews: 9,
     sku: 'OBM-GF300HD2',
@@ -267,5 +267,35 @@ export const products: Product[] = [
       'Stainless / polyurethane variants available: V.RA35, V.RB35, V.RC35, V.RD35'
     ],
     manufacturerUrl: 'https://www.mavimare.com/en/product/art-vcr35/'
+  },
+  {
+    id: 'vsa40',
+    name: 'V.SA40 Stainless Steel Steering Wheel with Control Knob',
+    model: 'V.SA40',
+    category: 'Steering Wheels',
+    image: '/products/vsa40.jpg',
+    rating: 4.9,
+    reviews: 14,
+    sku: 'OBM-VSA40',
+    isNew: true,
+    description:
+      'Polished stainless steel three-spoke steering wheel with an integrated turning knob for one-handed control. A 400 mm wheel that pairs durable marine-grade construction with a clean, classic helm look — built to stand up to salt and sun.',
+    includes: [
+      'V.SA40 steering wheel (Ø 400 mm)',
+      'Three-spoke stainless steel construction',
+      'Integrated control / turning knob'
+    ],
+    specs: [
+      { label: 'Diameter', value: '400 mm' },
+      { label: 'Material', value: 'Polished stainless steel' },
+      { label: 'Spokes', value: '3' },
+      { label: 'Control Knob', value: 'Integrated turning knob' },
+      { label: 'Manufacturer', value: 'MaviMare & Mancini SRL, Italy' }
+    ],
+    compatibility: [
+      'Compatible with Mavi Mare GM-series helm pumps (Ø 406 mm max wheel)',
+      'Also available as V.SA35 (350 mm)'
+    ],
+    manufacturerUrl: 'https://www.mavimare.com/en/product/art-vsa35/'
   }
 ];
