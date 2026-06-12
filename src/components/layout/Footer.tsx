@@ -16,7 +16,7 @@ export default function Footer() {
                 className="w-16 h-16 object-contain drop-shadow-[0_2px_10px_rgba(7,26,45,0.15)] transition-transform duration-300 group-hover:scale-105"
               />
               <div className="flex flex-col leading-none">
-                <span className="text-2xl font-bold tracking-tight">OceanBay</span>
+                <span className="text-2xl font-bold tracking-tight text-[#1565C0]">OceanBay</span>
                 <span className="text-xs font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-1">Marketing</span>
               </div>
             </Link>

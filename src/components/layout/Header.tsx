@@ -85,7 +85,7 @@ export default function Header() {
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 />
                 <div className="hidden sm:flex flex-col leading-none">
-                  <span className="text-xl lg:text-2xl font-bold tracking-tight">OceanBay</span>
+                  <span className="text-xl lg:text-2xl font-bold tracking-tight text-[#1565C0]">OceanBay</span>
                   <span className="text-[11px] lg:text-xs font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-1">Marketing</span>
                 </div>
               </Link>
