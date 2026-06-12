@@ -205,7 +205,7 @@ export const products: Product[] = [
   },
   {
     id: 'gf300hd2',
-    name: 'GF300HD2 Double-Cylinder Steering Kit, Triple Application',
+    name: 'GF300HD2 Dual-Cylinder Steering Kit',
     model: 'GF300HD2',
     category: 'Hydraulic Steering Kits',
     image: '/products/gf300hd2.jpg',
