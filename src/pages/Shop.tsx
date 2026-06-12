@@ -57,7 +57,7 @@ export default function Shop() {
               Marine Hydraulic Steering
             </h1>
             <p className="text-white/60 max-w-xl text-lg font-sans">
-              Mavi Mare steering systems matched to your outboard. Engineered in Italy, distributed in Florida.
+              Mavi Mare steering systems matched to your outboard. Engineered in Italy, distributed throughout the United States.
             </p>
           </div>
           <button
@@ -109,16 +109,6 @@ export default function Shop() {
                     </button>
                   </li>
                 ))}
-              </ul>
-            </div>
-
-            <div className="mb-8">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2FA8A0] mb-4">Engine Power</h3>
-              <ul className="space-y-3 mt-4">
-                <li><button className="text-[11px] font-semibold tracking-wider uppercase transition-colors text-white/50 hover:text-white">Up to 80 hp</button></li>
-                <li><button className="text-[11px] font-semibold tracking-wider uppercase transition-colors text-white/50 hover:text-white">81 to 150 hp</button></li>
-                <li><button className="text-[11px] font-semibold tracking-wider uppercase transition-colors text-white/50 hover:text-white">151 to 300 hp</button></li>
-                <li><button className="text-[11px] font-semibold tracking-wider uppercase transition-colors text-white/50 hover:text-white">301 to 350 hp</button></li>
               </ul>
             </div>
           </Reveal>

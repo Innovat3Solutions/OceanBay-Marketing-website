@@ -18,8 +18,7 @@ export type Product = {
   manufacturerUrl: string;
 };
 
-export const CATALOG_PDF_URL =
-  'https://img1.wsimg.com/blobby/go/6a5849b5-ad53-4ce8-91a4-3646b95501e1/downloads/45bfd4b9-1385-4ef2-acba-e819ed7446d9/mavi%20mare%20catalog.pdf?ver=1759783924053';
+export const CATALOG_URL = 'https://online.fliphtml5.com/dwiaq/Catalogo_2026/';
 
 export const categories = [
   { id: 'hydraulic-kits', name: 'Hydraulic Steering Kits', image: '/products/gf150brt.jpg' },

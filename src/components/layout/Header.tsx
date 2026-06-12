@@ -80,13 +80,13 @@ export default function Header() {
                 <motion.img
                   src="/logo.png"
                   alt="OceanBay Marketing"
-                  className="w-10 h-10 lg:w-11 lg:h-11 object-contain drop-shadow-[0_2px_8px_rgba(47,168,160,0.3)]"
+                  className="w-14 h-14 lg:w-16 lg:h-16 object-contain drop-shadow-[0_2px_8px_rgba(47,168,160,0.3)]"
                   whileHover={{ rotate: -6, scale: 1.08 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 />
                 <div className="hidden sm:flex flex-col leading-none">
-                  <span className="text-base lg:text-lg font-bold tracking-tight">OceanBay</span>
-                  <span className="text-[9px] lg:text-[10px] font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-0.5">Marketing</span>
+                  <span className="text-xl lg:text-2xl font-bold tracking-tight">OceanBay</span>
+                  <span className="text-[11px] lg:text-xs font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-1">Marketing</span>
                 </div>
               </Link>
             </div>

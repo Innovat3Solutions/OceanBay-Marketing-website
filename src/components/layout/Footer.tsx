@@ -13,11 +13,11 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="OceanBay Marketing"
-                className="w-12 h-12 object-contain drop-shadow-[0_2px_10px_rgba(47,168,160,0.35)] transition-transform duration-300 group-hover:scale-105"
+                className="w-16 h-16 object-contain drop-shadow-[0_2px_10px_rgba(47,168,160,0.35)] transition-transform duration-300 group-hover:scale-105"
               />
               <div className="flex flex-col leading-none">
-                <span className="text-xl font-bold tracking-tight">OceanBay</span>
-                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-1">Marketing</span>
+                <span className="text-2xl font-bold tracking-tight">OceanBay</span>
+                <span className="text-xs font-semibold tracking-[0.25em] uppercase text-[#2FA8A0] mt-1">Marketing</span>
               </div>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">

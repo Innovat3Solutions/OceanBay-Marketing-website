@@ -16,7 +16,7 @@ export default function Contact() {
           className="absolute inset-0 bg-[#071A2D]"
         >
           <img
-            src="/Contact%20Hero.png"
+            src="/Contact%20Us%20Hero.png"
             alt="Contact Ocean Bay Marketing"
             className="absolute inset-0 w-full h-full object-cover opacity-55"
           />

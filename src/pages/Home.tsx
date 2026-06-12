@@ -68,7 +68,7 @@ export default function Home() {
               }}
               className="text-lg opacity-70 text-[#F4F1EC] max-w-md mb-8 leading-relaxed font-sans"
             >
-              Premium hydraulic steering kits, helm pumps, and steering wheels for outboards from 80 to 350 hp. Quality meets affordability.
+              Premium hydraulic marine steering kits, helm pumps, and steering wheels for outboards from 80 to 350 hp. Quality meets affordability.
             </motion.p>
 
             <motion.div

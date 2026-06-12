@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, ReactNode } from "react";
-import { X, ExternalLink, Download } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { CATALOG_PDF_URL } from "@/data/products";
+import { CATALOG_URL } from "@/data/products";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -79,19 +79,12 @@ function CatalogModal({ onClose }: { onClose: () => void }) {
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             <a
-              href={CATALOG_PDF_URL}
+              href={CATALOG_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-white border border-white/20 hover:border-white/40 px-3 py-2 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> Open in new tab
-            </a>
-            <a
-              href={CATALOG_PDF_URL}
-              download="mavi-mare-catalog.pdf"
               className="hidden sm:inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#071A2D] bg-[#F4F1EC] hover:bg-[#2FA8A0] hover:text-white px-3 py-2 transition-colors"
             >
-              <Download className="w-3.5 h-3.5" /> Download
+              <ExternalLink className="w-3.5 h-3.5" /> Open in new tab
             </a>
             <button
               type="button"
@@ -104,11 +97,12 @@ function CatalogModal({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        {/* PDF Viewer */}
+        {/* Catalog Viewer */}
         <div className="flex-1 bg-white/5 relative">
           <iframe
-            src={CATALOG_PDF_URL}
+            src={CATALOG_URL}
             title="Mavi Mare Product Catalog"
+            allowFullScreen
             className="absolute inset-0 w-full h-full bg-white"
           />
           {/* Fallback message — only visible if iframe fails to load (positioned beneath) */}
@@ -120,19 +114,12 @@ function CatalogModal({ onClose }: { onClose: () => void }) {
         {/* Mobile actions footer */}
         <div className="sm:hidden flex items-center gap-2 border-t border-white/10 px-4 py-3 bg-white/5">
           <a
-            href={CATALOG_PDF_URL}
+            href={CATALOG_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-white border border-white/20 px-3 py-3 transition-colors"
-          >
-            <ExternalLink className="w-3.5 h-3.5" /> Open
-          </a>
-          <a
-            href={CATALOG_PDF_URL}
-            download="mavi-mare-catalog.pdf"
             className="flex-1 inline-flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#071A2D] bg-[#F4F1EC] px-3 py-3 transition-colors"
           >
-            <Download className="w-3.5 h-3.5" /> Download
+            <ExternalLink className="w-3.5 h-3.5" /> Open in new tab
           </a>
         </div>
       </motion.div>
