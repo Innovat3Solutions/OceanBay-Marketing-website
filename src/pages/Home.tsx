@@ -20,7 +20,7 @@ export default function Home() {
           className="absolute inset-0 bg-[#071A2D]"
         >
           <img
-            src="/Hero%20Image%202.png"
+            src="/Bay%20Boat%20Background.png"
             alt="Ocean Bay Marketing marine hydraulic steering"
             className="absolute inset-0 w-full h-full object-cover opacity-60 scale-105"
           />
