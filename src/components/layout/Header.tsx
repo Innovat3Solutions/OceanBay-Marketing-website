@@ -63,24 +63,24 @@ export default function Header() {
           className={cn(
             "w-full border-b transition-colors duration-300",
             scrolled || mobileMenuOpen
-              ? "border-white/10 bg-[#071A2D]/90 backdrop-blur-md shadow-lg"
-              : "border-transparent bg-[#071A2D]/30 backdrop-blur-sm"
+              ? "border-[#071A2D]/10 bg-[#F4F1EC] backdrop-blur-md shadow-lg"
+              : "border-transparent bg-[#F4F1EC]/90 backdrop-blur-sm"
           )}
         >
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
             <div className="flex items-center gap-4 lg:gap-6">
               <button
-                className="lg:hidden text-white hover:text-[#2FA8A0] transition-colors"
+                className="lg:hidden text-[#071A2D] hover:text-[#2FA8A0] transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
-              <Link href="/" className="text-white font-display flex items-center gap-3 group">
+              <Link href="/" className="text-[#071A2D] font-display flex items-center gap-3 group">
                 <motion.img
                   src="/OBM%20logo.png"
                   alt="OceanBay Marketing"
-                  className="w-14 h-14 lg:w-16 lg:h-16 object-contain drop-shadow-[0_2px_8px_rgba(47,168,160,0.3)]"
+                  className="w-14 h-14 lg:w-16 lg:h-16 object-contain drop-shadow-[0_2px_8px_rgba(7,26,45,0.15)]"
                   whileHover={{ rotate: -6, scale: 1.08 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 />
@@ -98,7 +98,7 @@ export default function Header() {
                   href={item.href}
                   className={cn(
                     "relative transition-colors group",
-                    location === item.href ? "text-white" : "text-white/70 hover:text-white"
+                    location === item.href ? "text-[#071A2D]" : "text-[#071A2D]/60 hover:text-[#071A2D]"
                   )}
                 >
                   <span>{item.label}</span>
@@ -113,7 +113,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={openCatalog}
-                className="relative text-white/70 hover:text-white transition-colors group cursor-pointer"
+                className="relative text-[#071A2D]/60 hover:text-[#071A2D] transition-colors group cursor-pointer"
               >
                 <span>Catalog</span>
                 <span className="absolute -bottom-2 left-0 right-0 h-px bg-[#2FA8A0] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
